@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "chat-maf"
+version = "0.1.0"
+description = "Microsoft Agent Framework console chatbot for Azure OpenAI"
+requires-python = ">=3.10"
+dependencies = [
+  "agent-framework[azure]==1.26.0",
+  "python-dotenv>=1.2.0",
+  "tzdata>=2025.2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=9.0.0",
+  "pytest-asyncio>=1.5.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/chat_maf"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+asyncio_default_fixture_loop_scope = "function"
